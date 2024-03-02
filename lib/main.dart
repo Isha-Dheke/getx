@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx/counter.dart';
 // import 'package:getx/home.dart';
-// import 'package:getx/home.dart';
 import 'package:getx/lan.dart';
-import 'package:getx/language.dart';
+// import 'package:getx/language.dart';
 
 void main() {
   runApp(const MyApp());

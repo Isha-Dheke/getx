@@ -1,34 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:getx/counter_controller.dart';
 
 class Counter extends StatefulWidget {
-  const Counter({super.key});
+  const Counter({Key? key}) : super(key: key);
 
   @override
   State<Counter> createState() => _CounterState();
 }
 
 class _CounterState extends State<Counter> {
-  int x = 10;
+  final CounterController controller = Get.put(CounterController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Increment"),
       ),
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        setState(() {
-          x++;
-        });
-      }),
-      body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              x.toString(),
-              style: TextStyle(fontSize: 90),
-            ),
-          ]),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          controller.incrementCounter();
+        },
+        child: Icon(Icons.add),
+      ),
+      body: Center(
+        child: Obx(
+          () {
+            return Text(
+              'Count: ${controller.counter.value}',
+              style: TextStyle(fontSize: 24.0),
+            );
+          },
+        ),
+      ),
     );
   }
 }
